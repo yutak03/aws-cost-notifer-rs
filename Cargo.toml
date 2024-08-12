@@ -1,9 +1,17 @@
 [package]
-name = "aws-cost-notifer-rs"
+name = "aws_cost_notifier_rs"
 version = "0.1.0"
 edition = "2021"
 authors = ["Yusuke Takedachi <yutak03.dev@gmail.com>"]
 description = "A Rust application to fetch AWS cost data and send notifications to Slack"
+
+[lib]
+name = "aws_cost_notifier_rs"
+path = "src/lib.rs"
+
+[[bin]]
+name = "aws_cost_notifier_rs"
+path = "src/main.rs"
 
 [dependencies]
 anyhow = "1.0.86"
