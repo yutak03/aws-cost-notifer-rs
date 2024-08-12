@@ -1,20 +1,23 @@
 use std::collections::HashMap;
-
-use anyhow::Context;
-use anyhow::Ok;
-use anyhow::Result;
+use anyhow::{
+    Context,
+    Ok,
+    Result
+};
 use aws_config::BehaviorVersion;
 use aws_config::Region;
-use aws_sdk_costexplorer::operation::get_cost_and_usage::GetCostAndUsageOutput;
-use aws_sdk_costexplorer::types::Granularity;
-use aws_sdk_costexplorer::types::GroupDefinition;
-use aws_sdk_costexplorer::types::GroupDefinitionType;
 use aws_sdk_costexplorer::Client as CostExplorerClient;
+use aws_sdk_costexplorer::operation::get_cost_and_usage::GetCostAndUsageOutput;
+use aws_sdk_costexplorer::types::{
+    Granularity, 
+    GroupDefinition, 
+    GroupDefinitionType, 
+    DateInterval
+};
 
 use crate::config::Config;
 use crate::models::cost_data::CostData;
 use crate::utils::billing_period::BillingPeriod;
-use aws_sdk_costexplorer::types::DateInterval;
 
 pub async fn create_client(config: &Config) -> Result<CostExplorerClient> {
     let aws_config = aws_config::defaults(BehaviorVersion::latest())
