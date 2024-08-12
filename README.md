@@ -6,7 +6,7 @@ AWS のコスト情報を取得し、Slack に通知する Rust アプリケー�
 
 ## 機能
 
-- AWS Cost Explorer API を使用して現在の月のコスト情報を取得
+- AWS Cost Explorer API を使用してプログラムを実行した月のコスト情報を取得
 - サービスごとのコスト内訳を計算
 - 総コストとサービスごとのコスト内訳を Slack に通知
 
