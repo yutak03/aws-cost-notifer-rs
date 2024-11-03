@@ -11,12 +11,12 @@ use aws_cost_notifier_rs::services::slack::send_notification;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let config = Config::load_config().unwrap();
-    let aws_client = create_client(&config).await.unwrap();
+    let config = Config::load_config()?;
+    let aws_client = create_client(&config).await?;
 
     let cost_data = fetch_cost(&aws_client).await?;
 
-    let summary = analyze_cost_data(&cost_data).unwrap();
+    let summary = analyze_cost_data(&cost_data)?;
     let message = format_slack_message(&summary);
 
     send_notification(&config.slack_webhook_url, &message).await?;
